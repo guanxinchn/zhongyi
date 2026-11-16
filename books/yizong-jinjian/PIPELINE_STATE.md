@@ -38,7 +38,34 @@
 6. 安全边界优先于知识密度：阶段 0 批判产出写入 SKILL.md 与 CAP-12。
 7. 四路转写均未屈从分派预设，按版心实录，差异已保留在语料备注与索引中。
 
+## 交付落地
+
+| 落点 | 状态 | 内容 |
+|---|---|---|
+| 用户级技能 | ✅ | `C://Users//majfn//.workbuddy//skills//yizong-jinjian-master//`，`agent_created: true`，25 个 .md |
+| 本地版本化 | ✅ | `yizong-jinjian/.git`，56 个文本文件、6734 行插入；`pages/`、`_probe/`、PNG 已忽略 |
+| 资料库 | ✅ | 个人空间，11 个 doc：DIGEST、整书理解、术语词典、卷册索引、语料覆盖与溯源索引、SKILL.md 入口、首卷凡例、原文语料 A/B/C/D；语义检索已回查命中 |
+| GitHub 仓库 | ⛔ | 见「已知阻塞」 |
+
+资料库 11 个文档的链接（均由上传返回）：
+
+- 精华总览与交付说明 `https://www.workbuddy.cn/space/d/TgwOA8peDjgCIMZBqIkoHH`
+- 整书结构理解 `https://www.workbuddy.cn/space/d/KKOVXP7ot2bxLN1gMx8Ho0`
+- 术语词典 `https://www.workbuddy.cn/space/d/QUI0EW1237ly5NNuxWxGXv`
+- 卷册结构与溯源坐标 `https://www.workbuddy.cn/space/d/ekZejh7AmIYzjsUdpnhso3`
+- 已转录语料覆盖与溯源索引 `https://www.workbuddy.cn/space/d/L7ALjNhw6pwklYOvStJE34`
+- 中医大师技能包入口 `https://www.workbuddy.cn/space/d/6siJP6aqVRlTwYp9TLc8GG`
+- 原文语料·首卷凡例 `https://www.workbuddy.cn/space/d/wo8v0LfRHyLEbZdd0dWRpV`
+- 原文语料 A 诊法方论伤寒 `https://www.workbuddy.cn/space/d/ZhGklWmCk3TYxB2uxFQp1i`
+- 原文语料 B 仲景全书 `https://www.workbuddy.cn/space/d/5TjRR72zHDVKw37nufaSAD`
+- 原文语料 C 杂病妇幼痘疹 `https://www.workbuddy.cn/space/d/P6v8PoNDeWQ0ygmDzuglCO`
+- 原文语料 D 外科眼科刺灸正骨 `https://www.workbuddy.cn/space/d/hUsmdJCnwwyarllxTDz8xb`
+
 ## 已知阻塞
 
-- GitHub 集成 `create_repository` 返回 403（集成无 Administration 写权限），且账号 `guanxinchn` 无可访问仓库可写；
-  已改为本地 `git init` + 提交完成版本化，待用户创建空私有仓库或授予权限后推送。
+- GitHub 集成 `create_repository` 两次均返回 403（私有、公开各一次；集成无建仓 / Administration 写权限）。
+  `get_me` 显示账号 `guanxinchn`、`public_repos: 0`；`search_repositories user:guanxinchn` 返回资源不存在或无权限。
+  已改为本地 `git init` + 提交完成版本化；待用户手工创建空仓库（公开或私有均可）并告知仓库名，
+  即可用 `push_files` 一次性推送 56 个文件，或为集成补上建仓权限后重试自动建仓。
+- 全书约 3,900 图页，仅逐字转写 125 页；技能包被设计为对未覆盖页明确回答「本书该条未转录，无可核验原文」。
+  如需全文级覆盖，须另做全本转写。
