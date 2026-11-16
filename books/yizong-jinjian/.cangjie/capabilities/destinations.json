@@ -1,0 +1,22 @@
+{
+  "bundle_id": "yizong-jinjian-wuyingdian-2026-11-16",
+  "policy": "stage1.6-promotion-gate-v1",
+  "entrypoint_budget": 8,
+  "selected_output": "single",
+  "note": "用户选择「中医大师技能包」单入口跨会话生效，故编译为 single：所有 active 能力均为入口内的能力卡。promoted 标记表示该单元具备独立 Skill 资格，供后续按使用证据拆分时使用；本轮不产生独立可发现入口。",
+  "destinations": {
+    "CAP-01": {"capability_id": "CAP-01", "slug": "bazheng-tuigang", "destination": "promoted", "gate": {"independent_intent": true, "independent_contract": true, "independent_runtime": true, "independent_reuse": true, "independent_eval": true}, "reason": "八纲推演有独立意图、独立输入输出契约与独立评测，且被多张卡依赖，具备晋级资格。"},
+    "CAP-02": {"capability_id": "CAP-02", "slug": "sizhen-hecan", "destination": "router", "gate": {"independent_intent": true, "independent_contract": false, "independent_runtime": false, "independent_reuse": true, "independent_eval": false}, "reason": "通常作为八纲推演的前置采集步骤被调用，独立运行价值不足，留在路由入口内。"},
+    "CAP-03": {"capability_id": "CAP-03", "slug": "bingji-tuiduan", "destination": "promoted", "gate": {"independent_intent": true, "independent_contract": true, "independent_runtime": true, "independent_reuse": true, "independent_eval": true}, "reason": "「判定病因」是用户明确点名的独立诉求，有独立触发语与输出契约。"},
+    "CAP-04": {"capability_id": "CAP-04", "slug": "zhifang-meifa", "destination": "router", "gate": {"independent_intent": true, "independent_contract": true, "independent_runtime": false, "independent_reuse": true, "independent_eval": false}, "reason": "多在方剂检索或条文解读之后被连带调用，独立运行条件不足。"},
+    "CAP-05": {"capability_id": "CAP-05", "slug": "fangji-suoyuan", "destination": "router", "gate": {"independent_intent": true, "independent_contract": true, "independent_runtime": true, "independent_reuse": false, "independent_eval": false}, "reason": "检索意图独立，但强依赖语料库与引用纪律，独立复用性弱。"},
+    "CAP-06": {"capability_id": "CAP-06", "slug": "zhengwu-cunyi", "destination": "promoted", "gate": {"independent_intent": true, "independent_contract": true, "independent_runtime": true, "independent_reuse": true, "independent_eval": true}, "reason": "用户红线「列出依据来源、禁止臆断」的落地单元，全局高频且可独立评测。"},
+    "CAP-07": {"capability_id": "CAP-07", "slug": "liujing-shanghan", "destination": "router", "gate": {"independent_intent": true, "independent_contract": true, "independent_runtime": true, "independent_reuse": false, "independent_eval": false}, "reason": "与八纲、病机、方证高度耦合，作为专题卡由入口路由。"},
+    "CAP-08": {"capability_id": "CAP-08", "slug": "zabing-fenxing", "destination": "router", "gate": {"independent_intent": true, "independent_contract": false, "independent_runtime": false, "independent_reuse": false, "independent_eval": false}, "reason": "按病名分门的索引型能力，依附于总入口更易用。"},
+    "CAP-09": {"capability_id": "CAP-09", "slug": "fuke-erke-douzhen", "destination": "router", "gate": {"independent_intent": true, "independent_contract": false, "independent_runtime": false, "independent_reuse": false, "independent_eval": true}, "reason": "专科特有检查项依附八纲，且涉及高风险人群，留在入口内便于安全卡统一判停。"},
+    "CAP-10": {"capability_id": "CAP-10", "slug": "waike-zhenjiu-zhenggu", "destination": "router", "gate": {"independent_intent": true, "independent_contract": false, "independent_runtime": false, "independent_reuse": false, "independent_eval": false}, "reason": "图谱语料不完整，独立运行条件不足。"},
+    "CAP-11": {"capability_id": "CAP-11", "slug": "gejue-xuexi", "destination": "router", "gate": {"independent_intent": true, "independent_contract": true, "independent_runtime": true, "independent_reuse": false, "independent_eval": true}, "reason": "学习辅导意图独立，但强依赖引用纪律与语料，作为路由卡。"},
+    "CAP-12": {"capability_id": "CAP-12", "slug": "anquan-bianjie", "destination": "promoted", "gate": {"independent_intent": true, "independent_contract": true, "independent_runtime": true, "independent_reuse": true, "independent_eval": true}, "reason": "全局最高优先判停单元，有独立触发信号与可验证的判停结果。"}
+  },
+  "summary": {"active": 12, "promoted": 4, "served_by_router": 8, "discoverable_entrypoints_in_single": 1}
+}

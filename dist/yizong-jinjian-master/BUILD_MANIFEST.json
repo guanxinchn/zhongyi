@@ -1,0 +1,42 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "references\\capabilities\\anquan-bianjie.md": "54ec4308336fe3789b0374dae4b256af1c91514c52fd46fa1875af81015f476f",
+    "references\\capabilities\\bazheng-tuigang.md": "b0bc3e0d3c68fc513b135e59305ce00638c0c02660d1e67c25763aa3369ca64a",
+    "references\\capabilities\\bingji-tuiduan.md": "34dd63deb6dc02aa5ec62f240304e0bec0db37f6708a3d72b28f7f84b58d3aa2",
+    "references\\capabilities\\fangji-suoyuan.md": "8e74359e506ea47800e8cca51d1878c72e0d2a988692bc19e984566186b72fa1",
+    "references\\capabilities\\fuke-erke-douzhen.md": "821b8cb240a593008a54f0d8e56f91a765f79979ad05b134c39609e9a56c20bf",
+    "references\\capabilities\\gejue-xuexi.md": "f56e4031ed12aceb782b93baf72b6d7ca78d036535533cb4d011699b07ba8781",
+    "references\\capabilities\\liujing-shanghan.md": "150838fe315cbacc1920436773f85e1beb87f17d54d95c7442d8380ce2abcc7d",
+    "references\\capabilities\\sizhen-hecan.md": "ce684c1f932e3bf4d1fec5f17acdb7e35ae2a2acd6d5e033b824678ac3aee6a8",
+    "references\\capabilities\\waike-zhenjiu-zhenggu.md": "c303e8f5dc5b180a7f65919780d9fd56a96124f5288799385be56c330c9f2c33",
+    "references\\capabilities\\zabing-fenxing.md": "5cf02480dfa66332df9a40560fdc9cc0cd0ad369b4e66ec6ec790a3f410dc708",
+    "references\\capabilities\\zhengwu-cunyi.md": "c3cb81f4c1018ec0e820dc3f6f975f3d823ff708c50f12efe3b0b09a178466d2",
+    "references\\capabilities\\zhifang-meifa.md": "acb989e3cae9c22ea6206bbd0b16b4456a4036ace7da234fd45be320b80be66b",
+    "references\\capability-index.md": "1c0c59ca24fb1374ce5fea05c272e6409e1b5477003e750d27e6ebe8a4b4a6dc",
+    "references\\cheatsheet.md": "44e1111dcf5041ecb74f1c27c4414fc32c3206f22e854ac6d16bb05a2548eed8",
+    "references\\glossary.md": "278823ccfd06712b8b0a20b038745cfb0b20f258121df6d727a2f61d6abad1bc",
+    "references\\overview.md": "871b1557ce2d49d95c67a23bd5e93d5881ce78573789c5292fe29e7e2e5d0594",
+    "SKILL.md": "65348bd9c9f9d2ad6304988ce2e42dda4258c3d508e3eb52790e6bb7dc9b878b"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "yizong-jinjian-wuyingdian-2026-11-16",
+  "bundle_sha256": "06af172d9a0e3b9613b3fa602c490533d61382776027cb9838a7ef4e677cf036",
+  "variant": "single",
+  "run_id": "run-20261116-135000-3ba089",
+  "decision": {
+    "schema_version": 1,
+    "requested": "single",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 8,
+    "promoted_count": 4,
+    "capability_count": 12,
+    "reasons": [
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 4 个晋级 Skill，共 5 个可发现入口）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}
