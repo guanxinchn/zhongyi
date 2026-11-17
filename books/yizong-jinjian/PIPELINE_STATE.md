@@ -10,7 +10,7 @@
 | 编译产物 | `dist/yizong-jinjian-master/`（run-20261116-135000-3ba089） |
 | 校验 | `validate_skill_pack.py`：0 errors / 0 warnings（25 个 .md，1 个 SKILL.md） |
 | 用户红线 | 「能根据描述判定病因并提出真实可行治疗方案，同时列出依据来源，禁止臆断、杜撰、乱编」 |
-| 最后更新 | 2026-11-16 |
+| 最后更新 | 2026-11-17 |
 
 ## 阶段进度
 
@@ -45,7 +45,7 @@
 | 用户级技能 | ✅ | `C://Users//majfn//.workbuddy//skills//yizong-jinjian-master//`，`agent_created: true`，25 个 .md |
 | 本地版本化 | ✅ | `yizong-jinjian/.git`，56 个文本文件、6734 行插入；`pages/`、`_probe/`、PNG 已忽略 |
 | 资料库 | ✅ | 个人空间，11 个 doc：DIGEST、整书理解、术语词典、卷册索引、语料覆盖与溯源索引、SKILL.md 入口、首卷凡例、原文语料 A/B/C/D；语义检索已回查命中 |
-| GitHub 仓库 | ⛔ | 见「已知阻塞」 |
+| GitHub 仓库 | ✅ | `https://github.com/guanxinchn/zhongyi`（Public，master 分支，2 提交 / 56 文件已推送并 API 复核） |
 
 资料库 11 个文档的链接（均由上传返回）：
 
@@ -61,11 +61,11 @@
 - 原文语料 C 杂病妇幼痘疹 `https://www.workbuddy.cn/space/d/P6v8PoNDeWQ0ygmDzuglCO`
 - 原文语料 D 外科眼科刺灸正骨 `https://www.workbuddy.cn/space/d/hUsmdJCnwwyarllxTDz8xb`
 
-## 已知阻塞
+## 遗留说明（已解决 / 固有限制）
 
-- GitHub 集成 `create_repository` 两次均返回 403（私有、公开各一次；集成无建仓 / Administration 写权限）。
-  `get_me` 显示账号 `guanxinchn`、`public_repos: 0`；`search_repositories user:guanxinchn` 返回资源不存在或无权限。
-  已改为本地 `git init` + 提交完成版本化；待用户手工创建空仓库（公开或私有均可）并告知仓库名，
-  即可用 `push_files` 一次性推送 56 个文件，或为集成补上建仓权限后重试自动建仓。
+- GitHub 建仓：集成 `create_repository` 始终 403（无 Administration 写权限），改由用户手工建空仓库
+  `guanxinchn/zhongyi`（Public）。集成写文件亦 403（缺 Contents: write），重新授权后 token 失效，
+  最终由用户在本地 Git Bash 完成浏览器授权 + `git push`（清除失效代理 `127.0.0.1:8412` 后直连通）。
+  2026-11-17 15:13 推送成功：远端 master HEAD `f364953`，API `git/trees` 复核 56 个 blob 全部到位。
 - 全书约 3,900 图页，仅逐字转写 125 页；技能包被设计为对未覆盖页明确回答「本书该条未转录，无可核验原文」。
   如需全文级覆盖，须另做全本转写。
