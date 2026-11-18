@@ -1,0 +1,320 @@
+bundle_id: tcm-master-classics-2026-11-18
+schema_version: 1
+promotion_budget: 8
+
+book:
+  title: 中医经典合集（综合中医大师）
+  author: 多典集合：御纂医宗金鉴 / 黄帝内经 / 伤寒论 / 金匮要略 / 脉经 / 濒湖脉学 / 温病条辨 / 医学衷中参西录 等
+  edition: 用户本地纯影印 PDF 合集，逐页目视转写核心篇
+  source: F:\中医\中医古籍\ 等目录，全部无文本层
+
+entry:
+  name: tcm-master
+  description: |
+    This skill should be used when the user asks about 中医辨证论治 / 病因病机推演 / 八纲辨证 / 四诊合参,
+    wants 脉诊舌诊判断、六经辨证、卫气营血与三焦辨证、藏象病机、方剂方证与出处考据,
+    asks for 《医宗金鉴》《黄帝内经》《伤寒论》《金匮要略》《脉经》《濒湖脉学》《温病条辨》《医学衷中参西录》
+    原文、歌诀、医案、卷次篇名考据, requests 学习辅导与背诵, or explicitly asks for 依据来源 / 出处 / 「不要臆断」.
+    典型措辞：「这些症状是什么证」「这个脉象/舌象主什么病」「按内经/伤寒怎么辨」「这个方出自哪卷」
+    「原文怎么说的」「帮我记这段歌诀」「给出依据」「查一下有没有记载」。
+    NOT for: 急危重症处置、开具处方或给出现代剂量、现代医学诊断与检验判读、
+    要求凭空补写古籍未载内容、与典籍无关的通用健康问题。
+    核心承诺：每条判断都给出 `<书代码>-P<页>` 或 `S<册>-P<页>` + 书名 + 卷次篇名的可核验出处；
+    语料未覆盖处一律回答「该条未转录／未载」，不臆断、不杜撰、不乱编。
+  core_principles:
+    - "八纲为先：凡论一证，必先依次落实阴阳、表里、寒热、虚实八项，再论病因、脏腑经络、治法方药（`S01-P25`）。"
+    - "出处随行：任何结论、原文、方名、歌诀都必须附 <书代码>-P<页>／S<册>-P<页> + 书名卷次篇名；给不出出处就不下结论。"
+    - "存疑不补：读不通或语料未覆盖处，照《医宗金鉴》「正誤／存疑」之例标注存疑或未转录，绝不据文义补字、补方、补剂量（`S02-P03`）。"
+    - "先法后方：用方先还原立方所针对的病机，戒「執方而昧法」（`S01-P21`–`S01-P22`）。"
+    - "四诊合参：望闻问切互相参合、色脉相合；采集缺项时先补问，不凭单一症状定证（`S25-P03`）。"
+    - "诸书互证：内经明其理、伤寒金匮立其法、脉舌详其象、温病补其变；一证可跨书取证，但须逐条标明出自何书。"
+    - "内外一体：外科等外证仍归脏腑气血、阴阳虚实、六淫七情求其内因（`S01-P25`）。"
+    - "安全优先：所引为古籍文献，输出为思路与出处，不构成诊疗方案；涉具体用药、剂量、禁忌、急危重症，必须提示交由执业医师面诊。"
+    - "讲解本分层：光明函授等白话讲解本须标明「讲解本」，不得与原经文混同引用。"
+  out_of_scope:
+    - "急危重症、外伤急救、孕产与新生儿急症的处置决策"
+    - "为具体个人开具处方、指定药物剂量或现代克重换算"
+    - "现代医学诊断、检验报告解读、西药与疫苗建议"
+    - "凭记忆补写各典籍未转录卷页的原文或方药"
+    - "五运六气推演断病、以古籍预后分层作现代临床判断"
+    - "把白话讲解本的内容当作古籍原文引用"
+    - "与所收典籍无关的通用健康或养生咨询"
+  stop_conditions:
+    - "用户要求给剂量、开处方、判断能否自行服药时 → 停止推演，说明古籍剂量不可自行折算，并提示执业医师面诊。"
+    - "所需内容不在 corpus/ 语料覆盖范围 → 明确回答「该条未转录，无可核验原文」，列出可查的书名卷次方向，不补写内容。"
+    - "原文出现 □（字迹漫漶）或被标注为存疑 → 只按可见部分说明，不猜测缺字，涉及药名剂量时提示回看原页。"
+    - "出现急危重症信号（如意识改变、剧烈胸痛、呼吸困难、大出血、高热惊厥等）→ 立即优先提示就医，不继续辨证。"
+    - "用户要求把注文当作经文、按语当作原文，或把讲解本当作原典 → 纠正层次与来源后再继续。"
+
+router_entry:
+  name: tcm-source-router
+  description: |
+    来源路由入口：当用户问题落在所收中医经典能力域但不属于已晋级能力时，
+    按意图路由到对应能力卡；命中不了就明确告知超出所收典籍范围。
+
+capabilities:
+  - capability_id: CAP-01
+    slug: bazheng-tuigang
+    title: 八纲辨证推演（阴阳表里寒热虚实）
+    importance: critical
+    intents: ["按八纲分析一组症状", "判断病位表里与病性寒热", "梳理证候传变", "问『这是什么证』"]
+    keywords: ["八纲", "阴阳", "表里", "寒热", "虚实", "辨证", "证候", "bazheng", "syndrome differentiation"]
+    one_liner: "每证必依次落实阴阳→表里→寒热→虚实八项，八项未明不定治法。"
+    card: cards/bazheng-tuigang.md
+    also_read: ["bingji-tuiduan", "sizhen-hecan", "anquan-bianjie"]
+    status: active
+    promotion: {destination: promoted}
+    frontmatter:
+      description: "This skill should be used when the user presents symptoms and asks what 证/病机 is, or asks to differentiate 阴阳表里寒热虚实. Not for prescribing or dosing."
+
+  - capability_id: CAP-02
+    slug: sizhen-hecan
+    title: 四诊合参与采集缺项处理
+    importance: high
+    intents: ["整理望闻问切信息", "判断还缺哪些诊断信息", "色脉合参", "问『还需要问什么』"]
+    keywords: ["四诊", "望闻问切", "色脉", "脉象", "望色", "问诊", "sizhen"]
+    one_liner: "望闻问切互相参合、色脉相合；缺项先补问，不凭单一症状定证。"
+    card: cards/sizhen-hecan.md
+    also_read: ["bazheng-tuigang", "bingji-tuiduan"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when diagnostic information is incomplete or the user asks what else to ask/examine under 四诊合参."
+
+  - capability_id: CAP-03
+    slug: bingji-tuiduan
+    title: 病因病机推演（从症状到病机）
+    importance: critical
+    intents: ["根据描述判定病因", "解释症状为什么出现", "推演病机链条", "六淫七情归因"]
+    keywords: ["病因", "病机", "为什么", "风邪", "寒邪", "六淫", "七情", "bingji", "pathogenesis"]
+    one_liner: "按书中范例把每个症状逐一归因于病机，而不是直接跳到病名或方名。"
+    card: cards/bingji-tuiduan.md
+    also_read: ["bazheng-tuigang", "sizhen-hecan", "zhifang-meifa"]
+    status: active
+    promotion: {destination: promoted}
+    frontmatter:
+      description: "This skill should be used when the user describes complaints and asks 为什么/是什么引起的, requiring a traced 病因病机 chain with textual sources."
+
+  - capability_id: CAP-04
+    slug: zhifang-meifa
+    title: 先法后方与方证对应（戒执方昧法）
+    importance: high
+    intents: ["判断某方是否对证", "理解立方之意", "抓主证用方", "方剂加减思路"]
+    keywords: ["执方昧法", "方证", "立方之意", "加减", "但见一证", "桂枝汤", "fangzheng"]
+    one_liner: "先还原立方所针对的病机，再谈方；抓主证而不必等主证齐备。"
+    card: cards/zhifang-meifa.md
+    also_read: ["fangji-suoyuan", "bingji-tuiduan", "liujing-shanghan"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user asks whether a formula fits a case, or why a formula was composed."
+
+  - capability_id: CAP-05
+    slug: fangji-suoyuan
+    title: 方剂方证检索与出处溯源
+    importance: high
+    intents: ["查某方的组成与主治", "查方剂出自哪卷", "按方名找原文", "核对禁忌"]
+    keywords: ["方剂", "方名", "组成", "主治", "禁忌", "出处", "卷次", "fangji", "formula"]
+    one_liner: "检索必带卷次与 S<册>-P<页>；只报语料中确有的方名、组成与禁忌。"
+    card: cards/fangji-suoyuan.md
+    also_read: ["zhifang-meifa", "zhengwu-cunyi"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user looks up a formula by name, asks its composition/indication/contraindication, or wants its 卷次 source."
+
+  - capability_id: CAP-06
+    slug: zhengwu-cunyi
+    title: 正误存疑与引用纪律
+    importance: critical
+    intents: ["要求给出依据来源", "核对某句是否出自本书", "处理读不通的原文", "判断可否引用"]
+    keywords: ["依据", "出处", "考据", "存疑", "正误", "不要臆断", "原文", "citation", "source"]
+    one_liner: "能溯源才下结论；漫漶标 □、未转录标未载、难解标存疑，绝不补写。"
+    card: cards/zhengwu-cunyi.md
+    also_read: ["fangji-suoyuan", "anquan-bianjie"]
+    status: active
+    promotion: {destination: promoted}
+    frontmatter:
+      description: "This skill should be used whenever the user asks for 依据/出处/原文核对, or when a claim lacks a verifiable source."
+
+  - capability_id: CAP-07
+    slug: liujing-shanghan
+    title: 六经辨证与伤寒条文解读
+    importance: high
+    intents: ["解读伤寒论条文", "辨太阳中风与伤寒", "六经传变", "理解服法与禁忌"]
+    keywords: ["伤寒论", "六经", "太阳病", "中风", "桂枝汤", "麻黄汤", "温覆", "shanghan"]
+    one_liner: "分清经文／注／集注／按／解层次，按提纲证与服法原文本解读。"
+    card: cards/liujing-shanghan.md
+    also_read: ["bazheng-tuigang", "zhengwu-cunyi", "zhifang-meifa"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user quotes or asks about 傷寒論条文、太陽病提纲、六經辨证 or 服法."
+
+  - capability_id: CAP-08
+    slug: zabing-fenxing
+    title: 杂病证治分型（卷四十至四十三）
+    importance: medium
+    intents: ["查杂病证型", "按病名找歌诀与方", "辨析同类病证"]
+    keywords: ["杂病", "中风", "疟", "黄疸", "泄泻", "霍乱", "zabing"]
+    one_liner: "以杂病心法要诀的病名分门为索引，按歌诀＋注文＋方名三层取证。"
+    card: cards/zabing-fenxing.md
+    also_read: ["bazheng-tuigang", "fangji-suoyuan"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user asks about an internal 杂病 category covered in 雜病心法要訣."
+
+  - capability_id: CAP-09
+    slug: fuke-erke-douzhen
+    title: 妇科幼科痘疹专科辨证
+    importance: medium
+    intents: ["妇幼专科证治", "痘疹顺险逆判断", "小儿病机特点"]
+    keywords: ["妇科", "幼科", "痘疹", "顺险逆", "惊", "疳", "胎产", "fuke", "erke"]
+    one_liner: "小儿气血未充、痘疹传变迅速；先分顺险逆，再详察虚实寒热所兼所挟。"
+    card: cards/fuke-erke-douzhen.md
+    also_read: ["bazheng-tuigang", "anquan-bianjie"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used for 婦科／幼科／痘疹 questions and the 順險逆三候 framework."
+
+  - capability_id: CAP-10
+    slug: waike-zhenjiu-zhenggu
+    title: 外科内外一体与刺灸正骨分寸
+    importance: medium
+    intents: ["外科疮疡辨证", "查经络部位与分寸", "正骨手法与器具", "眼科五轮八廓"]
+    keywords: ["外科", "疮疡", "刺灸", "经络", "正骨", "五轮", "八廓", "绘图立说", "waike"]
+    one_liner: "外证仍从内机求因；针灸正骨重分寸与图谱，八廓之类臆说按凡例剔除。"
+    card: cards/waike-zhenjiu-zhenggu.md
+    also_read: ["bazheng-tuigang", "zhengwu-cunyi"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used for 外科／眼科／刺灸／正骨 questions about 部位、经络、分寸、手法."
+
+  - capability_id: CAP-11
+    slug: gejue-xuexi
+    title: 歌诀学习辅导与背诵
+    importance: medium
+    intents: ["讲解歌诀", "带领背诵", "辨析易混点", "出自测题"]
+    keywords: ["歌诀", "背诵", "四言", "讲解", "记忆", "自测", "gejue"]
+    one_liner: "歌诀原文照录 → 逐句对应注文 → 归纳结构 → 自测，不改写成白话代替原文。"
+    card: cards/gejue-xuexi.md
+    also_read: ["zhengwu-cunyi", "bazheng-tuigang"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user wants to learn, recite, or be quizzed on 《醫宗金鑑》歌訣."
+
+  - capability_id: CAP-12
+    slug: anquan-bianjie
+    title: 安全边界与转诊提示
+    importance: critical
+    intents: ["要求给治疗方案", "问能不能自行服药", "涉及剂量", "急症信号"]
+    keywords: ["治疗方案", "剂量", "服药", "禁忌", "就医", "安全", "急症", "safety"]
+    one_liner: "输出文献与思路而非处方；涉剂量、禁忌、急危重症立即停止并提示执业医师。"
+    card: cards/anquan-bianjie.md
+    also_read: ["zhengwu-cunyi", "fangji-suoyuan"]
+    status: active
+    promotion: {destination: promoted}
+    frontmatter:
+      description: "This skill should be used whenever the user asks for an actionable 治疗方案、剂量、服药建议, or when 急危重症 signals appear."
+
+  - capability_id: CAP-13
+    slug: liujing-tigang
+    title: 六经辨证提纲与传变（伤寒原典）
+    importance: high
+    intents: ["问六经哪一经", "六经提纲原文", "传经过经", "阴病见阳脉"]
+    keywords: ["太阳病", "阳明病", "少阳病", "太阴", "少阴", "厥阴", "六经", "提纲", "传经", "伤寒论"]
+    one_liner: "以仲景六经提纲定位病位病性，参脉之阴阳判传变与预后。"
+    card: cards/liujing-tigang.md
+    also_read: ["liujing-shanghan", "bazheng-tuigang", "bingji-tuiduan"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user asks which 六经 stage a presentation belongs to, or asks for the original 《伤寒论》 六经提纲与传变条文. Not for prescribing."
+
+  - capability_id: CAP-14
+    slug: neijing-bingji-zangxiang
+    title: 内经病机与阴阳藏象（讲解本对照）
+    importance: high
+    intents: ["解释寒热虚实机理", "大虚有盛候", "症状归何脏", "内经病机"]
+    keywords: ["病机", "阴阳失调", "邪正", "精气夺则虚", "大虚有盛候", "肝藏血", "藏象", "内经", "讲解本"]
+    one_liner: "寒热=阴阳偏盛偏衰、虚实=邪正盛衰；识虚实真假，以藏象定脏腑。"
+    card: cards/neijing-bingji-zangxiang.md
+    also_read: ["bazheng-tuigang", "bingji-tuiduan", "liujing-tigang"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user asks for the 内经 theoretical mechanism of 寒热虚实, 虚实真假, or 藏象 localization. Based on 讲解本; not original 内经 text."
+
+  - capability_id: CAP-15
+    slug: maizhen-panjiu
+    title: 脉诊判读（濒湖脉学·脉经）
+    importance: critical
+    intents: ["看脉象断病因", "二十七脉辨析", "浮数主什么", "寸关尺定位"]
+    keywords: ["浮脉", "沉脉", "弦脉", "滑脉", "脉象", "主病", "寸关尺", "濒湖脉学", "脉经", "maizhen"]
+    one_liner: "按体状/相类/主病三层诗判脉，单脉定病位、配伍脉定病因、寸关尺定脏腑。"
+    card: cards/maizhen-panjiu.md
+    also_read: ["sizhen-hecan", "shezhen-pandu", "bazheng-tuigang"]
+    status: active
+    promotion: {destination: promoted}
+    frontmatter:
+      description: "This skill should be used when the user describes a 脉象 (e.g. 浮数、沉细、弦滑) and asks what disease/cause it indicates. Not for prescribing."
+
+  - capability_id: CAP-16
+    slug: shezhen-pandu
+    title: 舌诊判读（舌苔图说·苔色主病）
+    importance: high
+    intents: ["看舌苔断病因", "黑苔燥润", "苔色传变", "舌象方证"]
+    keywords: ["舌苔", "白胎", "黄胎", "黑胎", "燥润", "舌尖", "苔色", "舌诊", "shezhen"]
+    one_liner: "苔色示邪深浅，同象辨燥润定寒热，舌象连病机方证。"
+    card: cards/shezhen-pandu.md
+    also_read: ["sizhen-hecan", "maizhen-panjiu", "liujing-tigang"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user describes a 舌象/苔色 and asks what it indicates, especially 燥润 distinctions. Not for prescribing."
+
+  - capability_id: CAP-17
+    slug: wenbing-sanjiao
+    title: 温病三焦与卫气营血辨证（温病条辨）
+    importance: high
+    intents: ["伤寒还是温病", "上中下三焦辨证", "白虎还是承气", "温病后期存阴"]
+    keywords: ["温病", "风温", "上焦", "中焦", "下焦", "银翘散", "白虎汤", "承气汤", "大定风珠", "存阴", "wenbing"]
+    one_liner: "以三焦定温病部位传变，证同脉异细分白虎承气，下焦辨诸方之禁。"
+    card: cards/wenbing-sanjiao.md
+    also_read: ["liujing-tigang", "shezhen-pandu", "bazheng-tuigang"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user asks 伤寒 vs 温病, 三焦辨证, or 白虎/承气 differentiation in 温病. Not for prescribing."
+
+  - capability_id: CAP-18
+    slug: fangzheng-yian
+    title: 方证医案推演（医学衷中参西录）
+    importance: high
+    intents: ["根据描述找医案", "张锡纯怎么治", "某方治什么怎么加减", "辨证用方思路"]
+    keywords: ["张锡纯", "衷中参西录", "资生汤", "十全育真汤", "赭石", "医案", "加减", "方证"]
+    one_liner: "以医案的方证锚定+全程加减+用药心法，呈现症状到用方的完整推理链。"
+    card: cards/fangzheng-yian.md
+    also_read: ["fangji-suoyuan", "zhifang-meifa", "bingji-tuiduan", "anquan-bianjie"]
+    status: active
+    promotion: {destination: router}
+    frontmatter:
+      description: "This skill should be used when the user gives a symptom description and asks for relevant 医案/方证思路 from 张锡纯. Literature only, not a prescription."
+
+  - capability_id: CAP-19
+    slug: bingji-shijiu-tiao
+    title: 病机十九条与五脏归属（素问原典）
+    importance: critical
+    intents: ["症状归哪脏腑", "病机十九条", "诸风掉眩", "同症为何异属"]
+    keywords: ["病机十九条", "皆属于肝", "谨守病机", "各司其属", "归经", "至真要大论", "素问", "掉眩", "瞀瘛"]
+    one_liner: "按十九条把症状归五脏六气，以谨守病机、有无盛虚双向追因为程序。"
+    card: cards/bingji-shijiu-tiao.md
+    also_read: ["neijing-bingji-zangxiang", "bingji-tuiduan", "bazheng-tuigang"]
+    status: active
+    promotion: {destination: promoted}
+    frontmatter:
+      description: "This skill should be used when the user asks to map symptoms to 脏腑/病机 per 素问 病机十九条, or asks 诸风掉眩皆属于肝. Original 内经 text; not for prescribing."

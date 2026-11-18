@@ -1,0 +1,6 @@
+  skill: .staging-run-20261118-124230-9a2147-tcm-master   90 行    9762 字节
+
+共扫描 24 个 .md，其中 1 个 SKILL.md
+WARN  [name-dir] dist\.staging-run-20261118-124230-9a2147-tcm-master\SKILL.md: name `tcm-master` 与目录名 `.staging-run-20261118-124230-9a2147-tcm-master` 不一致
+
+结果: 0 errors, 1 warnings

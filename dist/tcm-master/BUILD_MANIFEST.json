@@ -1,0 +1,49 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "references\\capabilities\\anquan-bianjie.md": "54ec4308336fe3789b0374dae4b256af1c91514c52fd46fa1875af81015f476f",
+    "references\\capabilities\\bazheng-tuigang.md": "b0bc3e0d3c68fc513b135e59305ce00638c0c02660d1e67c25763aa3369ca64a",
+    "references\\capabilities\\bingji-shijiu-tiao.md": "37197bacd8a264283e978e15e7cd8d817b5b1ce2a2770b366956d1947e344347",
+    "references\\capabilities\\bingji-tuiduan.md": "34dd63deb6dc02aa5ec62f240304e0bec0db37f6708a3d72b28f7f84b58d3aa2",
+    "references\\capabilities\\fangji-suoyuan.md": "8e74359e506ea47800e8cca51d1878c72e0d2a988692bc19e984566186b72fa1",
+    "references\\capabilities\\fangzheng-yian.md": "11d81ae1ca44f4959feb8cdc9becf3c180476b8bed0b1f0f518a8c940531e5ca",
+    "references\\capabilities\\fuke-erke-douzhen.md": "821b8cb240a593008a54f0d8e56f91a765f79979ad05b134c39609e9a56c20bf",
+    "references\\capabilities\\gejue-xuexi.md": "f56e4031ed12aceb782b93baf72b6d7ca78d036535533cb4d011699b07ba8781",
+    "references\\capabilities\\liujing-shanghan.md": "150838fe315cbacc1920436773f85e1beb87f17d54d95c7442d8380ce2abcc7d",
+    "references\\capabilities\\liujing-tigang.md": "bffac6a226860a26f1f28164f09a07bbffc345e38d403a2adfbd14b31a99bb54",
+    "references\\capabilities\\maizhen-panjiu.md": "c4935680df8b406cc7208d91e6bb0f9a0247a46dc81e838f64d8d9bcc89b1e98",
+    "references\\capabilities\\neijing-bingji-zangxiang.md": "b738c53429a82ff70540fad7d66ecfb204438f202f0814607ad15ddeedd170e0",
+    "references\\capabilities\\shezhen-pandu.md": "1a0c4e4531c78bb45a9de371deaa138b1ccdca430902d8a3747ae08fd539dd16",
+    "references\\capabilities\\sizhen-hecan.md": "ce684c1f932e3bf4d1fec5f17acdb7e35ae2a2acd6d5e033b824678ac3aee6a8",
+    "references\\capabilities\\waike-zhenjiu-zhenggu.md": "c303e8f5dc5b180a7f65919780d9fd56a96124f5288799385be56c330c9f2c33",
+    "references\\capabilities\\wenbing-sanjiao.md": "49283a69348b2ce95d8fb90e6fac5588aea7b302a94778afbf4ed6db0b11f6be",
+    "references\\capabilities\\zabing-fenxing.md": "5cf02480dfa66332df9a40560fdc9cc0cd0ad369b4e66ec6ec790a3f410dc708",
+    "references\\capabilities\\zhengwu-cunyi.md": "c3cb81f4c1018ec0e820dc3f6f975f3d823ff708c50f12efe3b0b09a178466d2",
+    "references\\capabilities\\zhifang-meifa.md": "acb989e3cae9c22ea6206bbd0b16b4456a4036ace7da234fd45be320b80be66b",
+    "references\\capability-index.md": "c69631ba69bbec7329f1e74c413900f591de9e8842a149ede2b2d35b8dbfdd72",
+    "references\\cheatsheet.md": "bec051a6db70448f3772e31bca897d6a0f2a14a877f72b2804bc082141ba7dd0",
+    "references\\glossary.md": "88c9a88da51c04f8e2cf51395a63e38d7543a0214eda43427a21bb33c090730b",
+    "references\\overview.md": "871b1557ce2d49d95c67a23bd5e93d5881ce78573789c5292fe29e7e2e5d0594",
+    "SKILL.md": "fda702208b2430d709e91b0c36f03155f639b9909e958fef9428db93a780035d"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "tcm-master-classics-2026-11-18",
+  "bundle_sha256": "809cc724bf9443d40691223dd05d913dffabef70a7e4fa821b6e19e23f8e4561",
+  "variant": "single",
+  "run_id": "run-20261118-124230-9a2147",
+  "decision": {
+    "schema_version": 1,
+    "requested": "single",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 8,
+    "promoted_count": 6,
+    "capability_count": 19,
+    "reasons": [
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 6 个晋级 Skill，共 7 个可发现入口）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}
