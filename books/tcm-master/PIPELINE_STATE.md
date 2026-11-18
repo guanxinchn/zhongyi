@@ -4,7 +4,7 @@
 |---|---|
 | book-slug | `tcm-master` |
 | 流水线 | RIA-TV++ v2.5 Bundle 版（多经典合集升级） |
-| 当前阶段 | 阶段 0–1 进行中：多经典语料目视转写 |
+| 当前阶段 | **阶段 0–5 完成，已交付** |
 | 输出模式 | `single`（用户选「升级为综合中医大师」，单入口跨会话生效） |
 | 目标入口 | `tcm-master`（保留 `yizong-jinjian-master` 作兼容） |
 | Bundle | `.cangjie/capabilities/verified.yaml`（bundle_id `tcm-master-classics-2026-11-18`） |
@@ -15,14 +15,14 @@
 
 | 阶段 | 状态 | 产出 |
 |---|---|---|
-| 0 整书理解 | 🔄 | `corpus/00-经典总索引.md` 已建；各书 BOOK_OVERVIEW 待补 |
-| 1 五路转写 | 🔄 4/5 完成 | B（伤寒+金匮）47、C（脉学舌诊）59、D（温病+衷中参西录）64、E（函授讲解）35 页；A 路进行中 |
-| 1.5 三重验证 | ⏳ | 待转写完成后对新增能力单元验证 |
-| 1.6 晋级门 | ⏳ | 待办 |
-| 2 RIA++ 能力卡 | ⏳ | 已在金鉴 12 卡基础上复制，新增卡待写 |
-| 3 Zettelkasten | ⏳ | GLOSSARY 已继承金鉴 20 条，待补新术语 |
-| 4 压力测试 | ⏳ | 待办 |
-| 5 编译交付 | ⏳ | 待办 |
+| 0 整书理解 | ✅ | `corpus/00-经典总索引.md`（12 书坐标基准） |
+| 1 五路转写 | ✅ | A 素问灵枢47、B 伤寒金匮47、C 脉学舌诊59、D 温病+衷中参西录64、E 函授讲解35 页；合计 252 页新转写 + 金鉴 125 = **377 页可引用** |
+| 1.5 三重验证 | ✅ | 7 个新增能力单元通过 V1/V2/V3，见各卡审计信息 |
+| 1.6 晋级门 | ✅ | `destinations.json`：19 active / 7 promoted / 12 router |
+| 2 RIA++ 能力卡 | ✅ | 19 张（金鉴12 + 新增CAP-13~19），RIA六段齐全 |
+| 3 Zettelkasten | ✅ | GLOSSARY 38 条（金鉴20 + 多经典18），`also_read` 已链接 |
+| 4 压力测试 | ✅ | `test-prompts.json` 24 条（含兄弟诱饵与互斥负例） |
+| 5 编译交付 | ✅ | single 入口 `tcm-master`，validate 0 errors/0 warnings；安装＋资料库＋GitHub 全部落地 |
 
 ## 关键决策记录
 
@@ -33,14 +33,16 @@
 5. 讲解本明确标注「讲解本」，不得与原典混同引用。
 6. 安全边界、出处随行、存疑不补、诸书互证为核心原则。
 
+## 交付落地（全部完成 2026-11-18）
+
+| 落点 | 状态 | 内容 |
+|---|---|---|
+| 用户级技能 | ✅ | `C:/Users/majfn/.workbuddy/skills/tcm-master/`，`agent_created: true`，38 文件 / 37 .md；validate 0 errors/0 warnings |
+| 兼容保留 | ✅ | 原 `yizong-jinjian-master` 未动，可继续单独使用 |
+| 语料与溯源 | ✅ | references/corpus/ 12 文件 + 语料覆盖与溯源索引（377 页可引用清单） |
+| 资料库 | ✅ | 9 份：DIGEST、经典总索引、溯源索引、SKILL入口、语料 A/B/C/D/E |
+| GitHub | ✅ | `https://github.com/guanxinchn/zhongyi`（master，commit `ad13a12`，远端 131 文件 API 复核） |
+
 ## 待落地
 
-- [x] B 路伤寒+金匮转写完成（47 页）
-- [x] E 路函授讲解转写完成（35 页）
-- [x] C 路脉学舌诊转写完成（59 页，濒湖二十七脉全覆盖）
-- [ ] A 素问灵枢／D 温病衷中参西录转写
-- [ ] 新增能力卡 R 段回填真实转写原文
-- [ ] GLOSSARY 补新术语
-- [ ] 压力测试用例
-- [ ] 编译 tcm-master + 安装校验
-- [ ] 资料库同步、GitHub 推送、DIGEST
+全部完成。后续可选：扩大转录覆盖（本批 377 页为核心抽读，非全本）、按使用证据拆分 promoted 能力为独立 Skill。
