@@ -318,3 +318,18 @@ capabilities:
     promotion: {destination: promoted}
     frontmatter:
       description: "This skill should be used when the user asks to map symptoms to 脏腑/病机 per 素问 病机十九条, or asks 诸风掉眩皆属于肝. Original 内经 text; not for prescribing."
+
+  - capability_id: CAP-20
+    slug: tixing-bianzheng
+    title: 舌形辨证（现代权威来源层·裂纹/齿痕/胖瘦/老嫩）
+    importance: high
+    intents: ["舌中间有裂纹", "裂纹舌主什么", "齿痕舌是脾虚吗", "裂纹加齿痕怎么辨", "舌体胖大瘦瘪老嫩"]
+    keywords: ["裂纹舌", "齿痕舌", "齿印", "舌体胖大", "瘦瘪舌", "老嫩", "芒刺", "脾虚湿侵", "MOD", "fissured tongue"]
+    one_liner: "舌形不定寒热、舌色苔质才定；裂纹+齿痕并见查脾虚湿侵，跨层互证逐条标注MOD编号。"
+    card: cards/tixing-bianzheng.md
+    also_read: ["shezhen-pandu", "bazheng-tuigang", "bingji-tuiduan", "anquan-bianjie"]
+    status: active
+    promotion: {destination: router}
+    source_layer: modern-authoritative
+    frontmatter:
+      description: "This skill should be used when the user describes 舌体裂纹/齿痕/胖大/瘦瘪/老嫩 and asks what it indicates. Uses MOD-* modern authoritative layer (人卫第9版 + 中管局认证词条), participates in differentiation with source tags, not for prescribing or modern diagnosis."

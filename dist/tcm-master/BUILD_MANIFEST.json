@@ -15,22 +15,23 @@
     "references\\capabilities\\neijing-bingji-zangxiang.md": "b738c53429a82ff70540fad7d66ecfb204438f202f0814607ad15ddeedd170e0",
     "references\\capabilities\\shezhen-pandu.md": "1a0c4e4531c78bb45a9de371deaa138b1ccdca430902d8a3747ae08fd539dd16",
     "references\\capabilities\\sizhen-hecan.md": "ce684c1f932e3bf4d1fec5f17acdb7e35ae2a2acd6d5e033b824678ac3aee6a8",
+    "references\\capabilities\\tixing-bianzheng.md": "e715902a325450e5333de9111b2fc082f5332c7c211b926b63efba30a07dc6b2",
     "references\\capabilities\\waike-zhenjiu-zhenggu.md": "c303e8f5dc5b180a7f65919780d9fd56a96124f5288799385be56c330c9f2c33",
     "references\\capabilities\\wenbing-sanjiao.md": "49283a69348b2ce95d8fb90e6fac5588aea7b302a94778afbf4ed6db0b11f6be",
     "references\\capabilities\\zabing-fenxing.md": "5cf02480dfa66332df9a40560fdc9cc0cd0ad369b4e66ec6ec790a3f410dc708",
     "references\\capabilities\\zhengwu-cunyi.md": "c3cb81f4c1018ec0e820dc3f6f975f3d823ff708c50f12efe3b0b09a178466d2",
     "references\\capabilities\\zhifang-meifa.md": "acb989e3cae9c22ea6206bbd0b16b4456a4036ace7da234fd45be320b80be66b",
-    "references\\capability-index.md": "c69631ba69bbec7329f1e74c413900f591de9e8842a149ede2b2d35b8dbfdd72",
-    "references\\cheatsheet.md": "bec051a6db70448f3772e31bca897d6a0f2a14a877f72b2804bc082141ba7dd0",
+    "references\\capability-index.md": "34112cac6947f3040902db9e5f06ba364e9c0fe58df451377fc833c21d710428",
+    "references\\cheatsheet.md": "516a0cfd0f814fce50f34ce92ab61d56f479b1ba1b39e00a6d782d8bec75b0c6",
     "references\\glossary.md": "88c9a88da51c04f8e2cf51395a63e38d7543a0214eda43427a21bb33c090730b",
     "references\\overview.md": "871b1557ce2d49d95c67a23bd5e93d5881ce78573789c5292fe29e7e2e5d0594",
-    "SKILL.md": "fda702208b2430d709e91b0c36f03155f639b9909e958fef9428db93a780035d"
+    "SKILL.md": "fb391d7e541269991f2aae578a9836f5adbb9c3e47c9227d57568fd9878d6f8e"
   },
   "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
   "bundle_id": "tcm-master-classics-2026-11-18",
-  "bundle_sha256": "809cc724bf9443d40691223dd05d913dffabef70a7e4fa821b6e19e23f8e4561",
+  "bundle_sha256": "3086956e528f78c90f8c380f847dabbea62973708743cf2586ce5020d63d0e14",
   "variant": "single",
-  "run_id": "run-20261118-124230-9a2147",
+  "run_id": "run-20261119-102231-f401dc",
   "decision": {
     "schema_version": 1,
     "requested": "single",
@@ -38,7 +39,7 @@
     "decision_policy": "single-first-v1",
     "skill_budget": 8,
     "promoted_count": 6,
-    "capability_count": 19,
+    "capability_count": 20,
     "reasons": [
       "用户显式选择 single，auto 决策器不覆盖用户选择"
     ],

@@ -3,3 +3,6 @@ _probe/
 *.png
 __pycache__/
 render_d.py
+books/tcm-master/.cangjie/runs/
+books/tcm-master/.cangjie/snapshots/
+dist/.staging-*/

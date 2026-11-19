@@ -10,13 +10,13 @@ description: |
   「原文怎么说的」「帮我记这段歌诀」「给出依据」「查一下有没有记载」。
   NOT for: 急危重症处置、开具处方或给出现代剂量、现代医学诊断与检验判读、
   要求凭空补写古籍未载内容、与典籍无关的通用健康问题。
-  核心承诺：每条判断都给出 `<书代码>-P<页>` 或 `S<册>-P<页>` + 书名 + 卷次篇名的可核验出处；
+  核心承诺：每条判断都给出 `<书代码>-P<页>`／`S<册>-P<页>`（古籍图页层）或 `MOD-<机构>-<序号>`（现代权威来源层）+ 来源名的可核验出处；
   语料未覆盖处一律回答「该条未转录／未载」，不臆断、不杜撰、不乱编。
 metadata:
   cangjie.generated-by: cangjie-tools v2.5.0
   cangjie.variant: single
   cangjie.bundle-id: tcm-master-classics-2026-11-18
-  cangjie.capability-count: 19
+  cangjie.capability-count: 20
   cangjie.entrypoint-count: 1
 ---
 # 中医经典合集（综合中医大师） — 全书能力入口
@@ -36,7 +36,7 @@ metadata:
 ## 核心原则（常驻速览，概览类问题读到这里即可回答）
 
 1. 八纲为先：凡论一证，必先依次落实阴阳、表里、寒热、虚实八项，再论病因、脏腑经络、治法方药（`S01-P25`）。
-2. 出处随行：任何结论、原文、方名、歌诀都必须附 <书代码>-P<页>／S<册>-P<页> + 书名卷次篇名；给不出出处就不下结论。
+2. 出处随行：任何结论、原文、方名、歌诀都必须附 `<书代码>-P<页>`／`S<册>-P<页>`（古籍图页层，+书名卷次篇名）或 `MOD-<机构>-<序号>`（现代权威来源层，+来源名）；给不出出处就不下结论。两层并存但**不混引**，同一结论跨层取证须逐层各标编号。
 3. 存疑不补：读不通或语料未覆盖处，照《医宗金鉴》「正誤／存疑」之例标注存疑或未转录，绝不据文义补字、补方、补剂量（`S02-P03`）。
 4. 先法后方：用方先还原立方所针对的病机，戒「執方而昧法」（`S01-P21`–`S01-P22`）。
 5. 四诊合参：望闻问切互相参合、色脉相合；采集缺项时先补问，不凭单一症状定证（`S25-P03`）。
@@ -44,6 +44,7 @@ metadata:
 7. 内外一体：外科等外证仍归脏腑气血、阴阳虚实、六淫七情求其内因（`S01-P25`）。
 8. 安全优先：所引为古籍文献，输出为思路与出处，不构成诊疗方案；涉具体用药、剂量、禁忌、急危重症，必须提示交由执业医师面诊。
 9. 讲解本分层：光明函授等白话讲解本须标明「讲解本」，不得与原经文混同引用。
+10. 舌形分层（2026-11-19 增）：舌苔燥润看古籍层 `shezhen-pandu`（`ST-*`）；**舌体裂纹/齿痕/胖瘦/老嫩**看现代权威层 `tixing-bianzheng`（`MOD-*`）——同为裂纹，红绛少苔属热、浅淡属血虚，齿痕淡白湿润属寒湿/阳虚，**舌色苔质定寒热，不凭单一舌形下结论**；该层可参与辨证但须随行出处，不据此开方、给药量或作现代疾病诊断。
 
 ## 能力路由（先读本表，按意图加载 1 张能力卡）
 
@@ -65,6 +66,7 @@ metadata:
 | 解释寒热虚实机理；大虚有盛候；症状归何脏；内经病机 | references/capabilities/neijing-bingji-zangxiang.md | references/capabilities/bazheng-tuigang.md、references/capabilities/bingji-tuiduan.md、references/capabilities/liujing-tigang.md |
 | 看脉象断病因；二十七脉辨析；浮数主什么；寸关尺定位 | references/capabilities/maizhen-panjiu.md | references/capabilities/sizhen-hecan.md、references/capabilities/shezhen-pandu.md、references/capabilities/bazheng-tuigang.md |
 | 看舌苔断病因；黑苔燥润；苔色传变；舌象方证 | references/capabilities/shezhen-pandu.md | references/capabilities/sizhen-hecan.md、references/capabilities/maizhen-panjiu.md、references/capabilities/liujing-tigang.md |
+| **舌体裂纹／齿痕／胖大／瘦瘪／老嫩/芒刺；舌中间裂纹什么病；齿痕主什么；裂纹+齿痕并见怎么辨** | references/capabilities/tixing-bianzheng.md | references/capabilities/shezhen-pandu.md（舌苔层）、references/capabilities/bazheng-tuigang.md、references/capabilities/anquan-bianjie.md |
 | 伤寒还是温病；上中下三焦辨证；白虎还是承气；温病后期存阴 | references/capabilities/wenbing-sanjiao.md | references/capabilities/liujing-tigang.md、references/capabilities/shezhen-pandu.md、references/capabilities/bazheng-tuigang.md |
 | 根据描述找医案；张锡纯怎么治；某方治什么怎么加减；辨证用方思路 | references/capabilities/fangzheng-yian.md | references/capabilities/fangji-suoyuan.md、references/capabilities/zhifang-meifa.md、references/capabilities/bingji-tuiduan.md、references/capabilities/anquan-bianjie.md |
 | 症状归哪脏腑；病机十九条；诸风掉眩；同症为何异属 | references/capabilities/bingji-shijiu-tiao.md | references/capabilities/neijing-bingji-zangxiang.md、references/capabilities/bingji-tuiduan.md、references/capabilities/bazheng-tuigang.md |
@@ -76,12 +78,13 @@ metadata:
 - 完整意图与关键词索引（本表未覆盖的意图先查这里） → references/capability-index.md
 - 卷册/卷次/分部对照 → references/corpus/00-经典总索引.md（多经典）、`00-卷冊結構索引.md`（金鉴）
 - **哪些页有可核验原文、如何写溯源编号 → references/语料覆盖与溯源索引.md**
-- 原文逐页转写语料 → references/corpus/ 下 12 个文件
+- 原文逐页转写语料 → references/corpus/ 下 12 个古籍图页文件；现代权威舌象术语 → references/corpus/F-现代权威舌象.md（`MOD-*` 层）
 
 ## 加载规则
 
 - 每次任务先读本文件，再按路由表加载 **1** 张能力卡；任务明确跨域时最多加载 2 张。
-- **凡需给出原文、方名、歌诀、医案或卷次依据，必须先读 references/语料覆盖与溯源索引.md 确认该页已转录，再回查 references/corpus/ 对应语料；未在索引中出现的页不得引用。**
+- **凡需给出原文、方名、歌诀、医案或卷次依据，必须先读 references/语料覆盖与溯源索引.md 确认该条已收录（古籍页看 `<书代码>-P`，现代来源看 `MOD-*`），再回查 references/corpus/ 对应语料；未在索引中出现的页／编号不得引用。**
+- **两层不混引**：古籍图页层用 `<书代码>-P<页>`＋书名卷次；现代权威层用 `MOD-<机构>-<序号>`＋来源名。同一结论跨层取证时逐条分别标注，不合并成单一出处。
 - 概览/书名类问题不加载能力卡，用「核心原则」与 overview.md 回答。
 - 路由表与 capability-index.md 都无法命中的意图，明确告知超出所收典籍范围，不要硬套。
 

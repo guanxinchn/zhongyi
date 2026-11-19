@@ -37,12 +37,20 @@
 
 | 落点 | 状态 | 内容 |
 |---|---|---|
-| 用户级技能 | ✅ | `C:/Users/majfn/.workbuddy/skills/tcm-master/`，`agent_created: true`，38 文件 / 37 .md；validate 0 errors/0 warnings |
+| 用户级技能 | ✅ | `C:/Users/majfn/.workbuddy/skills/tcm-master/`，`agent_created: true`，40 文件 / 39 .md；validate 0 errors/0 warnings |
 | 兼容保留 | ✅ | 原 `yizong-jinjian-master` 未动，可继续单独使用 |
-| 语料与溯源 | ✅ | references/corpus/ 12 文件 + 语料覆盖与溯源索引（377 页可引用清单） |
-| 资料库 | ✅ | 9 份：DIGEST、经典总索引、溯源索引、SKILL入口、语料 A/B/C/D/E |
-| GitHub | ✅ | `https://github.com/guanxinchn/zhongyi`（master，commit `ad13a12`，远端 131 文件 API 复核） |
+| 语料与溯源 | ✅ | references/corpus/ 13 文件（12 古籍 + F 现代权威层）+ 语料覆盖与溯源索引（377 页图页层 + 11 条 MOD 层） |
+| 资料库 | ✅ | 11 份：原 9 份 + 现代权威舌象层 MOD 语料 + CAP-20 舌形辨证卡 |
+| GitHub | ✅ | `https://github.com/guanxinchn/zhongyi`（master；最新提交见下） |
+
+## 2026-11-19 增补：现代权威来源层
+
+- 触发：用户问"能否从网上查阅相关舌象的医学书籍完善本技能包"；确认方案为"新建独立来源层·分级标注 + 可参与辨证但随行出处"。
+- 核准来源：《中医学》第9版（人卫2018，陈金水）望舌形 6 段；国家中医药管理局审核认证词条「裂纹舌」「为什么舌头中间有裂痕」「齿痕舌」；腾讯医典「齿痕舌」（辅助低权重）。均于 2026-11-19 WebFetch 逐字核准并留 URL。
+- 新增：`corpus/F-现代权威舌象.md`（`MOD-CM9/SAT/YDX` 共 11 条）、CAP-20 `tixing-bianzheng` 卡、GLOSSARY +4 术语、test-prompts +4 用例。
+- 规则：两层并存不混引；SKILL.md 核心原则第2、10条 + 加载规则 + 路由表已同步；`agent_created: true`、capability-count=20。
+- 校验：validate 0 errors / 0 warnings；20 卡齐全；MOD 编号均可在 F 层回查。
 
 ## 待落地
 
-全部完成。后续可选：扩大转录覆盖（本批 377 页为核心抽读，非全本）、按使用证据拆分 promoted 能力为独立 Skill。
+全部完成。后续可选：扩大转录覆盖（本批 377 页为核心抽读，非全本）、按使用证据拆分 promoted 能力为独立 Skill、若需更多现代舌象/脉象可续补 `MOD-*` 层（须保持分级与可回查）。
